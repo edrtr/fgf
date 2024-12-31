@@ -18,15 +18,7 @@ local carInstance = {}
 -- Fin Local
 
 -- Init ESX
-ESX = nil
-
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj)
-		ESX = obj
-		end)
-	end
-end)
+ESX = exports["es_extended"]:getSharedObject()
 
 --Fonction Menu
 
@@ -1081,5 +1073,3 @@ AddEventHandler('esx_eden_garage:EnableSocietyGarage', function(society, bool)
 		end
 	end
 end)
-
-

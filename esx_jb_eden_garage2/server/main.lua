@@ -13,7 +13,7 @@ ESX.RegisterServerCallback('eden_garage:getVehicles', function(source, cb, KindO
 		identifier = ESX.GetPlayerFromId(_source).identifier
 	end
 
-	MySQL.Async.fetchAll("SELECT vehicle, vehiclename, pound, `stored`, garage_name FROM owned_vehicles WHERE owner = @identifier and type=@vehicle_type", {
+	MySQL.Async.fetchAll("SELECT vehicle, vehiclename, pound, `stored`, garage_name FROM owned_vehicles WHERE owner = @identifier AND type = @vehicle_type", {
 		['@identifier'] = identifier,
 		['@vehicle_type'] = vehicle_type
 	}, function(result)
@@ -138,9 +138,9 @@ ESX.RegisterServerCallback('eden_garage:getOutVehicles',function(source, cb, Kin
 		identifier = ESX.GetPlayerFromId(_source).identifier
 	end
 
-	MySQL.Async.fetchAll("SELECT * FROM owned_vehicles WHERE owner = @identifier AND (`stored` = FALSE OR pound = TRUE) AND garage_name = @garage_name AND type=@vehicle_type",{
+	MySQL.Async.fetchAll("SELECT * FROM owned_vehicles WHERE owner = @identifier AND (`stored` = FALSE OR pound = TRUE) AND garage_name = @garage_name AND type = @vehicle_type", {
 		['@identifier'] = identifier,
-		['@garage_name'] = garage_name, 
+		['@garage_name'] = garage_name,
 		['@vehicle_type'] = vehicle_type
 	}, function(result)
 		cb(result)
